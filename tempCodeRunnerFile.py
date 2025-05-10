@@ -1,1 +1,1 @@
-plt.circle((3,10),2)
+plt.axis('equal')  # To ensure the circle appears circular

@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-# import matplotlib.patches as pt
+
 x=[1,5]
 y=[1,1]
 
@@ -35,8 +35,12 @@ x=[3.5,3.5]
 y=[1,5]
 plt.plot(x,y,color='red')
 # plt.circle((3,10),2)
-# circle = pt.Circle((3, 10), 2, color='green')  # Center = (3,10), radius = 2
-# plt.plot(circle)
 
+
+# Add a circle (sun) at the top
+circle = plt.Circle((1, 8), 0.5, color='yellow')  # (x,y), radius, color
+plt.gca().add_patch(circle)
+
+plt.axis('equal')  # To ensure the circle appears circular
 
 plt.show()
