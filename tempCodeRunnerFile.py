@@ -1,0 +1,1 @@
+plt.bar(product,prices,width=.5)
