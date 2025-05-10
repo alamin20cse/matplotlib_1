@@ -1,1 +1,1 @@
-plt.bar(product,prices,width=.5)
+plt.circle((3,10),2)
