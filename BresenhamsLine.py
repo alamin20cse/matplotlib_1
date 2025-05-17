@@ -3,56 +3,55 @@ import matplotlib.pyplot as plt
 def bresenham_line(x1, y1, x2, y2):
     x_points = []
     y_points = []
-
     dx = abs(x2 - x1)
     dy = abs(y2 - y1)
-    x, y = x1, y1
-
-    sx = 1 if x2 > x1 else -1
-    sy = 1 if y2 > y1 else -1
-
-    if dx > dy:
-        err = dx / 2.0
-        while x != x2:
+    steep = dy > dx
+    
+    if steep:
+        x1, y1 = y1, x1
+        x2, y2 = y2, x2
+        dx, dy = dy, dx
+    
+    if x1 > x2:
+        x1, x2 = x2, x1
+        y1, y2 = y2, y1
+    
+    p = 2 * dy - dx
+    y = y1
+    y_step = 1 if y1 < y2 else -1
+    
+    for x in range(x1, x2 + 1):
+        if steep:
+            x_points.append(y)
+            y_points.append(x)
+        else:
             x_points.append(x)
             y_points.append(y)
-            err -= dy
-            if err < 0:
-                y += sy
-                err += dx
-            x += sx
-    else:
-        err = dy / 2.0
-        while y != y2:
-            x_points.append(x)
-            y_points.append(y)
-            err -= dx
-            if err < 0:
-                x += sx
-                err += dy
-            y += sy
-
-    # Add final point
-    x_points.append(x)
-    y_points.append(y)
-
+        
+        if p >= 0:
+            y += y_step
+            p -= 2 * dx
+        p += 2 * dy
+    
     return x_points, y_points
 
-# ✅ Input from user
-x1 = int(input("Enter x1: "))
-y1 = int(input("Enter y1: "))
-x2 = int(input("Enter x2: "))
-y2 = int(input("Enter y2: "))
+# Taking input from user
+xstart = int(input("Enter x1: "))
+ystart = int(input("Enter y1: "))
+xend = int(input("Enter x2: "))
+yend = int(input("Enter y2: "))
 
-# ✅ Call algorithm
-x_vals, y_vals = bresenham_line(x1, y1, x2, y2)
+# Get points of the line
+x_coords, y_coords = bresenham_line(xstart, ystart, xend, yend)
 
-# ✅ Plot using matplotlib
-plt.figure(figsize=(6, 6))
-plt.plot(x_vals, y_vals, marker='o', color='green')
-plt.title("Bresenham's Line Drawing Algorithm")
-plt.xlabel("X-axis")
-plt.ylabel("Y-axis")
+# Plot the line
+plt.figure(figsize=(6, 4))
+plt.plot(x_coords, y_coords, marker='o', linestyle='-', color='green')
+plt.title("Bresenham's Line Algorithm")
+plt.xlabel("X")
+plt.ylabel("Y")
 plt.grid(True)
-plt.axis("equal")
+
+print(x_coords)
+print(y_coords)
 plt.show()
