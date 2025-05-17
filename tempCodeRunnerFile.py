@@ -1,5 +1,4 @@
-cir1=Circle((2,1),0,5 ,color='black')
-ax.add_patch(car1)
-
-cir2=Circle((6,1),0,5 ,color='black')
-ax.add_patch(car2)
+  ax.clear()
+    ax.set_xlim(0,13)
+    ax.set_ylim(0,8)
+    ax.axis('off')
