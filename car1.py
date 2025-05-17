@@ -14,6 +14,9 @@ car_top = Rectangle((0.4, 1), 1.2, 0.4, color='lightblue')
 wheel1 = Circle((0.5, 0.4), 0.2, color='black')
 wheel2 = Circle((1.5, 0.4), 0.2, color='black')
 
+road=Rectangle((0,0),13,.5,color='gray')
+ax.add_patch(road)
+
 # Add components to the axis
 ax.add_patch(car_body)
 ax.add_patch(car_top)

@@ -1,2 +1,1 @@
-print(Xval)
-# print(Yval)
+plt.gca().set_aspect('equal', adjustable='box')
